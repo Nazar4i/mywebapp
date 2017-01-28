@@ -11,15 +11,17 @@ import servlets.AllRequestsServlet;
  */
 public class Main {
     public static void main(String[] args) throws Exception {
-        AllRequestsServlet allRequestsServlet = new AllRequestsServlet();
 
-        ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
-        context.addServlet(new ServletHolder(allRequestsServlet), "/*");
+            AllRequestsServlet allRequestsServlet = new AllRequestsServlet();
 
-        Server server = new Server(8080);
-        server.setHandler(context);
+            ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
+            context.addServlet(new ServletHolder(allRequestsServlet), "/*");
 
-        server.start();
-        server.join();
+            Server server = new Server(8080);
+            server.setHandler(context);
+
+            server.start();
+            java.util.logging.Logger.getGlobal().info("Server started");
+            server.join();
     }
 }
